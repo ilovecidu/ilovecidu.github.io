@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>七堵春節指南 - 自動導航中</title>
+    <title>跳轉中</title>
 </head>
 <body style="font-family:sans-serif; text-align:center; padding-top:50px;">
     <p>正在為您跳轉至正確頁面...</p>
@@ -11,17 +11,15 @@
         // 1. 取得目前的網址路徑 (例如 /2026lny/index.html)
         var path = window.location.pathname;
 
-        // 2. 判斷是否包含小寫的 2026lny
+        // 2. 判斷是否包含小寫的 
         if (path.toLowerCase().includes("/2026lny")) {
-            
-            // 我們只把資料夾名稱修正，其餘部分維持原樣
-            // 或者最保險的方法：直接導向該專案的首頁
+        
             var newURL = "https://ilovecidu.github.io/2026LNY/";
             
             window.location.replace(newURL);
         } else {
             // 其他真的找不到的情況
-            document.write('<h1>404 找不到頁面</h1><a href="/2026LNY/">點此返回首頁</a>');
+            document.write('<h1>404 找不到頁面</h1><a href="https://www.facebook.com/ilovecidu/">返回我是七堵人</a>');
         }
     </script>
 </body>
