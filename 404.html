@@ -1,58 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>正在尋找頁面... - 七堵 2026 春節指南</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f9f9f9; color: #333; text-align: center; }
-        .container { padding: 20px; }
-        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #e74c3c; animation: spin 1s linear infinite; margin: 0 auto 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        a { color: #e74c3c; text-decoration: none; font-weight: bold; }
-    </style>
+    <meta charset="utf-8">
+    <title>七堵春節指南 - 自動導航中</title>
 </head>
-<body>
-    <div class="container" id="message-box">
-        <div class="spinner"></div>
-        <p>正在為您嘗試正確的網址路徑，請稍候...</p>
-    </div>
+<body style="font-family:sans-serif; text-align:center; padding-top:50px;">
+    <p>正在為您跳轉至正確頁面...</p>
 
-    <script type="text/javascript">
-        // 取得目前的網址資訊
+    <script>
+        // 1. 取得目前的網址路徑 (例如 /2026lny/index.html)
         var path = window.location.pathname;
-        var search = window.location.search;
 
-        // 避免無限循環：如果網址已經帶有 "retry=true"，表示我們已經嘗試過翻轉大小寫但還是失敗
-        if (search.indexOf("retry=true") === -1) {
-            var newPath = "";
-
-            // 邏輯：嘗試切換大小寫
-            // 如果目前的網址有大寫，就試試看全小寫；如果是全小寫，就試試看全大寫
-            if (path !== path.toLowerCase()) {
-                newPath = path.toLowerCase();
-            } else {
-                newPath = path.toUpperCase();
-            }
-
-            // 執行跳轉，並加上 retry 標記
-            if (newPath !== "" && newPath !== path) {
-                // 處理原本可能存在的其他參數
-                var separator = (search.length > 0) ? "&" : "?";
-                window.location.replace(newPath + search + separator + "retry=true");
-            } else {
-                showError();
-            }
+        // 2. 判斷是否包含小寫的 2026lny
+        if (path.toLowerCase().includes("/2026lny")) {
+            
+            // 我們只把資料夾名稱修正，其餘部分維持原樣
+            // 或者最保險的方法：直接導向該專案的首頁
+            var newURL = "https://ilovecidu.github.io/2026LNY/";
+            
+            window.location.replace(newURL);
         } else {
-            // 已經嘗試過一次但還是 404
-            showError();
-        }
-
-        function showError() {
-            document.getElementById('message-box').innerHTML = 
-                "<h1>抱歉！找不到頁面</h1>" +
-                "<p>我們嘗試調整網址大小寫後仍無法找到內容。<br>請檢查網址是否有誤，或返回首頁。</p>" +
-                "<br><a href='https://www.facebook.com/ilovecidu'>我是七堵人</a>";
+            // 其他真的找不到的情況
+            document.write('<h1>404 找不到頁面</h1><a href="/2026LNY/">點此返回首頁</a>');
         }
     </script>
 </body>
